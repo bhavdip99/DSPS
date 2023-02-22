@@ -21,6 +21,9 @@ fun main() {
     var result = 0
     program.addTwoNum2(2, 7) { x, y -> result = x + y } // Type 3
     println("Result sum: $result")
+
+//    Kotlin "it" keyword in Lambda expression
+    program.reverseAndDisplay("Hello") { it.reversed() }
 }
 
 class LambdaHigherOrder {
@@ -49,6 +52,13 @@ class LambdaHigherOrder {
     fun addTwoNum2(a: Int, b: Int, action: (Int, Int) -> Unit) {
         action(a, b) // result = x + y = a + b = 2 + 7 = 9
     }
+
+    //    Kotlin "it" keyword in Lambda expression
+    fun reverseAndDisplay(str: String, myFunction: (String) -> String) { // High Level Function with Lambda as Parameter
+        val resultString = myFunction(str) // it.reversed() ==> str.reversed() ===> "Hello".reversed() = "olleH"
+        println("Reversed String: $resultString")
+    }
+
 }
 
 interface MyAddInterface {
